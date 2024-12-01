@@ -18,12 +18,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
         tools:context=".MainActivity">
 
         <ImageView
             android:id="@+id/background_image"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:contentDescription="@string/in_here_the_dessert_images"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -57,6 +59,7 @@
             android:layout_width="@dimen/button_width"
             android:layout_height="@dimen/button_height"
             android:background="?android:selectableItemBackground"
+            android:contentDescription="@string/selected_images_are_here"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toTopOf="@+id/white_background"
             app:layout_constraintLeft_toLeftOf="parent"

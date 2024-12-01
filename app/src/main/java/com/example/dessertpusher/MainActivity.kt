@@ -2,6 +2,7 @@
 
 import android.content.ActivityNotFoundException
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -11,6 +12,7 @@ import androidx.core.app.ShareCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LifecycleObserver
 import com.example.dessertpusher.databinding.ActivityMainBinding
+import timber.log.Timber
 
 
  class MainActivity : AppCompatActivity(), LifecycleObserver {
@@ -55,6 +57,7 @@ import com.example.dessertpusher.databinding.ActivityMainBinding
         binding.dessertButton.setOnClickListener {
             onDessertClicked()
         }
+        Timber.i("onCreate called")
 
         // Set the TextViews to the right values
         binding.revenue = revenue
@@ -130,4 +133,33 @@ import com.example.dessertpusher.databinding.ActivityMainBinding
          return super.onOptionsItemSelected(item)
      }
 
+     override fun onStart() {
+         super.onStart()
+         Timber.i("onStart Called")
+     }
+
+     override fun onResume() {
+         super.onResume()
+         Timber.i("onResume Called")
+     }
+
+     override fun onPause() {
+         super.onPause()
+         Timber.i("onPause Called")
+     }
+
+     override fun onStop() {
+         super.onStop()
+         Timber.i("onStop Called")
+     }
+
+     override fun onRestart() {
+         super.onRestart()
+         Timber.i("onRestart Called")
+     }
+
+     override fun onDestroy() {
+         super.onDestroy()
+         Timber.i("onDestroy Called")
+     }
  }

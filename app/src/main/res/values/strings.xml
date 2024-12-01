@@ -6,4 +6,6 @@
     <string name="share_text">I\'ve clicked %1$d Desserts for a total of %2$d$ #AndroidDessertClicker</string>
     <string name="share">Share</string>
     <string name="sharing_not_available">Sharing Not Available</string>
+    <string name="in_here_the_dessert_images">In Here the Dessert images</string>
+    <string name="selected_images_are_here">Selected Images are here</string>
 </resources>
