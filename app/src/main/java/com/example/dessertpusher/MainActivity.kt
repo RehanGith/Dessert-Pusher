@@ -60,8 +60,7 @@ import timber.log.Timber.DebugTree
             onDessertClicked()
         }
         Timber.i("onCreate Called")
-        dessertTimer = DessertTimer()
-        dessertTimer.startTimer()
+        dessertTimer = DessertTimer(this.lifecycle)
         // Set the TextViews to the right values
         binding.revenue = revenue
         binding.amountSold = dessertsSold
@@ -154,13 +153,11 @@ import timber.log.Timber.DebugTree
      override fun onStop() {
          super.onStop()
          Timber.i("onStop Called")
-         dessertTimer.stopTimer()
      }
 
      override fun onRestart() {
          super.onRestart()
          Timber.i("onRestart Called")
-         dessertTimer.startTimer()
      }
 
      override fun onDestroy() {
