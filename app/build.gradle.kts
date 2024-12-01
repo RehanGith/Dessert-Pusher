@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.dessertpusher"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.dessertpusher"
@@ -13,6 +13,8 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+
+        vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -26,6 +28,9 @@ android {
             )
         }
     }
+    buildFeatures {
+        dataBinding = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -36,6 +41,8 @@ android {
 }
 
 dependencies {
+
+    implementation(libs.androidx.timber)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
