@@ -15,7 +15,9 @@ import com.example.dessertpusher.databinding.ActivityMainBinding
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
-
+const val REVENUE_VALUE = "revenue"
+ const val DESSERT_SOLD = "dessertsSold"
+ const val TIMER_VALUE = "time"
  class MainActivity : AppCompatActivity(), LifecycleObserver {
      private var revenue = 0
      private var dessertsSold = 0
@@ -67,6 +69,12 @@ import timber.log.Timber.DebugTree
 
         // Make sure the correct dessert is showing
         binding.dessertButton.setImageResource(currentDessert.imageId)
+        if(savedInstanceState != null) {
+            revenue = savedInstanceState.getInt(REVENUE_VALUE, 0)
+            dessertsSold = savedInstanceState.getInt(DESSERT_SOLD, 0)
+            dessertTimer.secondsCount = savedInstanceState.getInt(TIMER_VALUE, 0)
+            showCurrentDessert()
+        }
     }
      /**
       * Updates the score when the dessert is clicked. Possibly shows a new dessert.
@@ -163,5 +171,18 @@ import timber.log.Timber.DebugTree
      override fun onDestroy() {
          super.onDestroy()
          Timber.i("onDestroy Called")
+     }
+
+     override fun onSaveInstanceState(outState: Bundle) {
+         super.onSaveInstanceState(outState)
+         outState.putInt(REVENUE_VALUE, revenue)
+         outState.putInt(DESSERT_SOLD, dessertsSold)
+         outState.putInt(TIMER_VALUE, dessertTimer.secondsCount)
+         Timber.i("onSaveInstanceState called")
+     }
+
+     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+         super.onRestoreInstanceState(savedInstanceState)
+         Timber.i("onRestoreInstanceState called")
      }
  }
