@@ -21,18 +21,12 @@ const val REVENUE_VALUE = "revenue"
  class MainActivity : AppCompatActivity(), LifecycleObserver {
      private var revenue = 0
      private var dessertsSold = 0
-     lateinit var dessertTimer: DessertTimer
+     private lateinit var dessertTimer: DessertTimer
 
      // Contains all the views
      private lateinit var binding: ActivityMainBinding
 
-     /** Dessert Data **/
 
-     /**
-      * Simple data class that represents a dessert. Includes the resource id integer associated with
-      * the image, the price it's sold for, and the startProductionAmount, which determines when
-      * the dessert starts to be produced.
-      */
      data class Dessert(val imageId: Int, val price: Int, val startProductionAmount: Int)
 
      // Create a list of all desserts, in order of when they start being produced
@@ -63,11 +57,7 @@ const val REVENUE_VALUE = "revenue"
         }
         Timber.i("onCreate Called")
         dessertTimer = DessertTimer(this.lifecycle)
-        // Set the TextViews to the right values
-        binding.revenue = revenue
-        binding.amountSold = dessertsSold
 
-        // Make sure the correct dessert is showing
         binding.dessertButton.setImageResource(currentDessert.imageId)
         if(savedInstanceState != null) {
             revenue = savedInstanceState.getInt(REVENUE_VALUE, 0)
@@ -75,6 +65,10 @@ const val REVENUE_VALUE = "revenue"
             dessertTimer.secondsCount = savedInstanceState.getInt(TIMER_VALUE, 0)
             showCurrentDessert()
         }
+        // Set the TextViews to the right values
+        binding.revenue = revenue
+        binding.amountSold = dessertsSold
+
     }
      /**
       * Updates the score when the dessert is clicked. Possibly shows a new dessert.
